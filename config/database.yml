@@ -1,0 +1,23 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: jair  
+  password: 12345678
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: bitflix_development
+
+  
+test:
+  <<: *default
+  database: bitflix_test
+
+
+production:
+  <<: *default
+  database: bitflix_production
+  username: bitflix
+  password: <%= ENV['BITFLIX_DATABASE_PASSWORD'] %>
