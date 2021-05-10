@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
+gem "aws-sdk-s3"
 gem 'devise'
 gem 'fast_jsonapi', git: "https://github.com/Netflix/fast_jsonapi", branch: "dev"
 gem 'jbuilder', '~> 2.7'
