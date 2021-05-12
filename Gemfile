@@ -6,6 +6,7 @@ ruby '3.0.1'
 gem "aws-sdk-s3"
 gem 'devise'
 gem 'fast_jsonapi', git: "https://github.com/Netflix/fast_jsonapi", branch: "dev"
+gem 'foreman'
 gem 'jbuilder', '~> 2.7'
 gem 'pg_search'
 gem 'pg', '~> 1.1'
