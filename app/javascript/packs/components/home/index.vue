@@ -1,7 +1,7 @@
 <template>
   <div>
    <Featured :movie="featuredMovie"/>
-    <MovieList v-for= '(category, index) in categories'
+    <MovieList v-for='(category, index) in categories'
               :key='index'
               :name='category.name'
               :movies='category.movies'/>
