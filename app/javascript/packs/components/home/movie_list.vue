@@ -13,13 +13,18 @@
     </slick>
    </v-flex>
   </v-layout>
-  <MovieMenu v-if="menuOpen" :id="movieId" :type="movieType" :closeDetails="closeDetails"/>
+  <MovieMenu v-if="menuOpen && currentMovieId == movieId" :movieId="movieId"
+               :id="movieId"
+               :type="movieType"
+               :closeDetails="closeDetails"/>
  </div>
 </template>
  
 <script>
  import Slick from 'vue-slick';
- import MovieMenu from './movie_menu'
+ import MovieMenu from './movie_menu';
+ import { mapState } from 'vuex';
+ import { mapActions } from 'vuex';
  
  export default {
    props: {
@@ -64,19 +69,26 @@
    MovieMenu
   },
   methods: {
-   openDetails(e, id) {
-    e.preventDefault();
-    if (this.menuOpen == true && this.movieId == id){
-     this.closeDetails();
-    }else {
-      this.movieId = parseInt(id);
-      this.menuOpen = true;
-    }
+    openDetails(e, id) {
+      e.preventDefault();
+      if (this.menuOpen == true && this.movieId == id){
+      this.closeDetails();
+      }else {
+        this.changeId(id);
+        this.movieId = parseInt(id);
+        this.menuOpen = true;
+      }
+    },
+    closeDetails(){
+      this.menuOpen = false ;
+   },
+   ...mapActions({
+    changeId: 'MovieMenu/changeId' ,
+   })
   },
-  closeDetails(){
-    this.menuOpen = false ;
-   }
-  }
+  computed: mapState({
+     currentMovieId: state => state.MovieMenu.currentMovieId,
+   })
  }
 </script>
  
