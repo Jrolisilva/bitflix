@@ -62,6 +62,9 @@ import MovieList from './movie_list.vue';
   components: {
     'Featured' : Featured,
     'MovieList': MovieList
+  },
+  mounted: function(){
+    this.$store.dispatch(' Watchable/getFeatured ');
   }
  }
 </script>
